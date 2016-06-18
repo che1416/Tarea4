@@ -5,7 +5,7 @@
  */
 package Hilo;
 import archivos.LeerDistricto;
-import controlador.Controlador;
+import controlador.ContraladorH;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,9 +20,9 @@ public class hilos {
     private final int id;
     private LeerDistricto leer;
     private File path;
-    private Controlador controlador;
+    private ContraladorH controlador;
 
-    public hilos(lock lock, int id, LeerDistricto leer, File path, Controlador controlador,String nombre) {
+    public hilos(lock lock, int id, LeerDistricto leer, File path, ContraladorH controlador,String nombre) {
          super(nombre);
         this.Lock = lock;
         this.id = id;
@@ -34,10 +34,10 @@ public class hilos {
     public void run() {
         
         try {
-            leer.open(path);
-            leer.read( Lock);
-            leer.close();
-             controlador.aumentarContador(this);
+            LeerDistricto.open(path);
+           LeerDistricto.read( Lock);
+           LeerDistricto.close();
+           
            
         } catch (FileNotFoundException ex) {
            
